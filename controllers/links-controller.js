@@ -1,6 +1,5 @@
 const express = require('express');
 const repository = require('../repositories/links-repository');
-const { replaceOne } = require('../models/link');
 
 exports.getAll = async (require, response, next) => {
     try {

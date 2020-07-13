@@ -1,7 +1,8 @@
 const express = require('express');
 const md5 = require('md5');
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
+const { schema, replaceOne } = require('../models/user');
+const User = mongoose.model('User',schema);
 const { verifyKey } = require('../config');
 
 

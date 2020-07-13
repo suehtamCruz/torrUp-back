@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
-const Links = mongoose.model('Links');
+const { schema, replaceOne } = require('../models/link');
+const Links = mongoose.model('Links',schema);
 
 exports.getALl = async () => {
     let list = await Links.find();
     return list;
 }
 exports.createNewLink = async (data) => {
-    let newLink = new Links();
+    let newLink = new Links(data);
     await newLink.save();
 }
 exports.updateLink = async (id,data) => {

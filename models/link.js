@@ -1,20 +1,18 @@
 const mongoose = require('mongoose');
-const SchemaPad = mongoose.Schema;
+const SchemaLink = mongoose.Schema;
 
-const schema = new SchemaPad({
-
+const schema2 = new SchemaLink({
     name: {
         type: String,
         required: true
     },
     description: {
-        type: true,
-        required: true,
+        type: String,
+        required: true
     },
     tags: [{
         type: String,
-        required: true,
-        trim: true,
+        required: true
     }],
     link: {
         type: String,
@@ -23,4 +21,4 @@ const schema = new SchemaPad({
     },
 });
 
-module.exports = mongoose.model('Links',schema);
+module.exports = mongoose.model('Links',schema2);
