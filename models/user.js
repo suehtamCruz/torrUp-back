@@ -9,6 +9,11 @@ const schema = new SchemaPad({
     password:{
         type:String,
         required:true
-    }
+    },
+    admin : {
+        type: Boolean,
+        required:true,
+        default:false,
+    },
 });
 module.exports = mongoose.model('User',schema);

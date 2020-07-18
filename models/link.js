@@ -19,6 +19,7 @@ const schema2 = new SchemaLink({
         required: true,
         trim: true
     },
+   
 });
 
 module.exports = mongoose.model('Links',schema2);

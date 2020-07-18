@@ -11,7 +11,8 @@ const { verifyKey } = require('../config');
 exports.createNewUser = async (require, response, next) => {
     await repository.create({
         email: require.body.email,
-        password: md5(require.body.password + verifyKey)
+        password: md5(require.body.password + verifyKey),
+        admin:require.body.admin,
     })
     response.status(201).send({
         message: "User created sucessful!"

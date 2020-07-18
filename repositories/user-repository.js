@@ -11,7 +11,7 @@ exports.create = async (data) => {
     await user.save();
 }
 exports.getAll = async () => {
-    let list = await User.find();
+    let list = await User.find({},'id email admin');
     return list;
 }
 exports.updateById = async (id, data) => {
