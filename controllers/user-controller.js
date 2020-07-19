@@ -12,7 +12,7 @@ exports.createNewUser = async (require, response, next) => {
     await repository.create({
         email: require.body.email,
         password: md5(require.body.password + verifyKey),
-        admin:require.body.admin,
+        admin: require.body.admin,
     })
     response.status(201).send({
         message: "User created sucessful!"
@@ -48,12 +48,31 @@ exports.deleteUser = async (require, response, next) => {
     try {
         await repository.deleteUser(require.params.id);
         response.status(200).send({
-            message:"USER DELETED!"
+            message: "USER DELETED!"
         })
     } catch (e) {
         response.status(400).send({
-            message:"DELETE USER FAIL!",
-            data:e,
+            message: "DELETE USER FAIL!",
+            data: e,
+        })
+    }
+}
+exports.isAdmim = async (require, response, next) => {
+    try {
+        let user = await repository.isAdmin(require.params.id)
+     
+        if(user.admin == true){
+            next();
+        }
+        else{
+            return response.status(400).send({
+                message:"UNAUTHORIZED!",
+            })
+        }
+    } catch (e) {
+       return response.status(400).send({
+            mesage: "THE REQUEST TO CREATE A NEW LINK IS BAD!",
+            data : e,            
         })
     }
 }
