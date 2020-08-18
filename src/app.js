@@ -3,12 +3,16 @@ const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors  = require("cors");
+
+
 
 const indexRoute = require('../routes/indexRoute');
 const userRoute = require('../routes/users');
 const linksRoute = require('../routes/links')
 
 const { connectionString } = require('../config');
+
 const connect = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 if (connect) {
     console.log("SERVER UP");
@@ -19,6 +23,7 @@ if (connect) {
 const port = 3003;
 app.set('port', port);
 app.listen(port);
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
