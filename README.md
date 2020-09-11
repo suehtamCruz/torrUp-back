@@ -1,2 +1,2 @@
 # TORR-UP BACK
-## API para salvar links no banco.
+## API para salvar links.
